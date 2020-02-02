@@ -1,0 +1,32 @@
+<agm-map [latitude]='latitude' [longitude]='longitude' [mapTypeId]='mapType' [zoom]="1000">
+</agm-map>
+<form [formGroup]="profileForm" (ngSubmit)="onFormSubmit(profileForm.value)" id="profileform">
+    <mat-form-field>
+        <input formControlName="Name" matInput placeholder="Name" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+        <input formControlName="Email" matInput placeholder="Email" required>
+    </mat-form-field>
+    &nbsp;
+    <mat-form-field>
+        <input formControlName="DateOfBirth" matInput placeholder="Date Of Birth" required [matDatepicker]="picker">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    &nbsp;
+    <mat-card formGroupName="Address" id="addressformgroup">
+        <mat-card-title>Address</mat-card-title>
+        <mat-card-content>
+            <mat-form-field>
+                <input formControlName="Latitude" matInput placeholder="Latitude" required>
+            </mat-form-field>
+            &nbsp;
+            <mat-form-field>
+                <input formControlName="Longitude" matInput placeholder="Longitude" required>
+            </mat-form-field>
+        </mat-card-content>
+    </mat-card>
+    <br>
+    <button mat-button mat-raised-button color="primary" [disabled]="!profileForm.valid" id="submitbtn">Submit</button>
+</form>
